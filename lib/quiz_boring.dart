@@ -3,33 +3,32 @@ import 'model.dart';
 class QuizBiring {
   int _numbers = 0;
   final List<Questions> _QusetionBank = [
-    Questions(q: 'Some cats are actually allergic to humans', a: true),
-    Questions(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+    Questions('Some cats are actually allergic to humans', true),
+    Questions('You can lead a cow down stairs but not up stairs.', false),
     Questions(
-        q: 'Approximately one quarter of human bones are in the feet.',
-        a: true),
-    Questions(q: 'A slug\'s blood is green.', a: true),
-    Questions(q: 'Buzz Aldrin\'s mother\'s maiden name was \"Moon\".', a: true),
-    Questions(q: 'It is illegal to pee in the Ocean in Portugal.', a: true),
+        'Approximately one quarter of human bones are in the feet.', true),
+    Questions('A slug\'s blood is green.', true),
+    Questions('Buzz Aldrin\'s mother\'s maiden name was \"Moon\".', true),
+    Questions('It is illegal to pee in the Ocean in Portugal.', true),
     Questions(
-        q: 'No piece of square dry paper can be folded in half more than 7 times.',
-        a: false),
+        'No piece of square dry paper can be folded in half more than 7 times.',
+        false),
     Questions(
-        q: 'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
-        a: true),
+        'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
+        true),
     Questions(
-        q: 'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
-        a: false),
+        'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+        false),
     Questions(
-        q: 'The total surface area of two human lungs is approximately 70 square metres.',
-        a: true),
-    Questions(q: 'Google was originally called \"Backrub\".', a: true),
+        'The total surface area of two human lungs is approximately 70 square metres.',
+        true),
+    Questions('Google was originally called \"Backrub\".', true),
     Questions(
-        q: 'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
-        a: true),
+        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        true),
     Questions(
-        q: 'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
-        a: true),
+        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+        true),
   ];
 
   void nextquestion() {

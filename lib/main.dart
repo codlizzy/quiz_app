@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:quiz_app/quiz_boring.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -15,13 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.grey.shade900,
-        body: const SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: QuizHome(),
-          ),
-        ),
+        body: QuizHome(),
       ),
     );
   }
@@ -67,87 +63,103 @@ class _QuizHomeState extends State<QuizHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          flex: 5,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              // center question Text
-              child: Text(
-                quizBiring.getquestion(),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ),
-        // button true
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(Colors.green),
-                shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('assets/images/sky.jpg'), fit: BoxFit.cover),
+      ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 4),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 5,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    // center question Text
+                    child: Text(
+                      quizBiring.getquestion(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
-              onPressed: () {
-                checkanswered(true);
-              },
-              child: const Text(
-                'ture',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                    fontStyle: FontStyle.italic),
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        // button false
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(Colors.red),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              // button true
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          const MaterialStatePropertyAll(Colors.green),
+                      shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      checkanswered(true);
+                    },
+                    child: const Text(
+                      'ture',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          fontStyle: FontStyle.italic),
+                    ),
                   ),
                 ),
               ),
-              onPressed: () {
-                checkanswered(false);
-              },
-              child: const Text(
-                'false',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                    fontStyle: FontStyle.italic),
+
+              // button false
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          const MaterialStatePropertyAll(Colors.red),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      checkanswered(false);
+                    },
+                    child: const Text(
+                      'false',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                ),
               ),
-            ),
+              // check and close Icon
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  children: scoreKeeper,
+                ),
+              ),
+            ],
           ),
         ),
-        // check and close Icon
-        Row(
-          children: scoreKeeper,
-        ),
-      ],
+      ),
     );
   }
 }
